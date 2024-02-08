@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Formular</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.css" rel="stylesheet">
 </head>
 <body>
     <form id="dataForm" action="/submit-form" method="POST" novalidate>
@@ -64,10 +65,25 @@
                     <span class="sb-form__error-text">Beskriv venligst dine interesser</span>
                 </fieldset>
 
+                <fieldset class="sb-form__set">
+                    <label class="sb-form__label">
+                        <input type="checkbox" id="uploadCheckbox" aria-label="Upload filer?">
+                        Skal der uploades filer?
+                    </label>
+                </fieldset>
+
+                <!-- Container for Dropzone, skjult som standard -->
+                <div id="dropzoneContainer" class="hidden">
+                    <!-- Dropzone setup vil ske her -->
+                    <div class="dropzone" id="my-awesome-dropzone"></div>
+                </div>
+
                 <input type="submit" value="Send" aria-label="Submit Form">
             </div>
         </section>
     </form>
-    <script src="Core.js"></script>
+    <script src="scripts/Core.js"></script>
+    <script src="scripts/dropzone.js"></script>
+    <script src="scripts/customForm.js"></script>
 </body>
 </html>

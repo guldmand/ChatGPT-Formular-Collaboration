@@ -3,5 +3,7 @@
 /MinimalAPI/obj
 /MinimalAPI/Properties
 /MinimalAPI/*.sln
+/nuget-config/
+/nuget-config/*
 appsettings.json
 appsettings.Development.json

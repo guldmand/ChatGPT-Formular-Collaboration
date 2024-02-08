@@ -7,8 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapPost("/submit-form", async (HttpRequest req) => {
-    if (!req.Headers.ContainsKey("ThisIsJustATest")) {
-        return Results.BadRequest("Header key 'ThisIsJustATest' is missing.");
+    // Check for the "x-api-key" header instead of "ThisIsJustATest"
+    if (!req.Headers.ContainsKey("x-api-key") || req.Headers["x-api-key"] != "ThisIsJustATest") {
+        return Results.BadRequest("API key is missing or incorrect.");
     }
 
     // Assuming you're sending JSON data from the client
