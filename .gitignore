@@ -2,5 +2,6 @@
 /MinimalAPI/bin
 /MinimalAPI/obj
 /MinimalAPI/Properties
+/MinimalAPI/*.sln
 appsettings.json
 appsettings.Development.json
