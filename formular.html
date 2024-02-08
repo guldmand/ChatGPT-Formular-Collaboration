@@ -13,7 +13,7 @@
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
                         <span class="sb-form__label-text">Navn</span>
-                        <input class="sb-form__input" type="text" name="Name" autocomplete="name" required>
+                        <input class="sb-form__input" type="text" name="Name" autocomplete="name" required aria-label="Full Name">
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste dit navn</span>
                 </fieldset>
@@ -21,7 +21,7 @@
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
                         <span class="sb-form__label-text">Email</span>
-                        <input class="sb-form__input" type="email" name="Email" autocomplete="email" required>
+                        <input class="sb-form__input" type="email" name="Email" autocomplete="email" required aria-label="Email Address">
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste en gyldig email-adresse</span>
                 </fieldset>
@@ -29,7 +29,7 @@
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
                         <span class="sb-form__label-text">Postnummer</span>
-                        <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}" title="Postnummer skal være 4 cifre.">
+                        <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}" title="Postnummer skal være 4 cifre." aria-label="Postnummer">
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste et gyldigt postnummer</span>
                 </fieldset>
@@ -37,7 +37,7 @@
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
                         <span class="sb-form__label-text">By</span>
-                        <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required pattern="[A-Za-z\s]+" title="By må kun indeholde bogstaver.">
+                        <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required pattern="[A-Za-z\s]+" title="By må kun indeholde bogstaver." aria-label="By">
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste din by</span>
                 </fieldset>                
@@ -45,7 +45,7 @@
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
                         <span class="sb-form__label-text">Land</span>
-                        <select class="sb-form__input" name="Country" required>
+                        <select class="sb-form__input" name="Country" required aria-label="Country">
                             <option value="">Vælg et land...</option>
                             <option value="Denmark">Danmark</option>
                             <option value="Sweden">Sverige</option>
@@ -64,7 +64,7 @@
                     <span class="sb-form__error-text">Beskriv venligst dine interesser</span>
                 </fieldset>
 
-                <input type="submit" value="Send">
+                <input type="submit" value="Send" aria-label="Submit Form">
             </div>
         </section>
     </form>
