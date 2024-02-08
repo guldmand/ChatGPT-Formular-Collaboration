@@ -18,14 +18,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to toggle Dropzone visibility
     function toggleDropzoneVisibility() {
+        var checkbox = document.getElementById('uploadCheckbox');
+        var dropzoneContainer = document.getElementById('dropzoneContainer');
+    
         if (checkbox.checked) {
             dropzoneContainer.classList.remove('hidden');
-            initializeDropzone(); // Initialize Dropzone when the checkbox is checked
+            // Sikrer, at Dropzone er initialiseret
+            if (!myDropzone) {
+                initializeDropzone();
+            }
+            // Aktiver validering for Dropzone (kræver mindst én fil)
+            myDropzone.options.dictDefaultMessage = "Træk filer herhen for at uploade (påkrævet)";
+            myDropzone.required = true; // Dette er mere symbolsk, da Dropzone ikke bruger en 'required' egenskab på samme måde som native input felter.
         } else {
             dropzoneContainer.classList.add('hidden');
-            // If you need to reset or disable Dropzone, do it here
+            // Deaktiver validering for Dropzone
+            if (myDropzone) {
+                myDropzone.removeAllFiles(true); // Fjerner alle filer og resetter Dropzone, hvis det er nødvendigt
+            }
+            myDropzone.options.dictDefaultMessage = "Træk filer herhen for at uploade";
+            myDropzone.required = false; // Igen, mere symbolsk
         }
     }
+
+    document.getElementById('dataForm').addEventListener('submit', function(e) {
+        var checkbox = document.getElementById('uploadCheckbox');
+        // Tjek om checkboxen er markeret, og om der er filer i Dropzone
+        if (checkbox.checked && myDropzone.getAcceptedFiles().length === 0) {
+            e.preventDefault(); // Forhindrer formen i at blive indsendt
+            alert('Du skal uploade mindst én fil, når checkboxen er markeret.');
+            // Tilføj yderligere brugerfeedback her, f.eks. visning af en fejlmeddelelse
+        }
+    });   
+    
 
     // Event listener for the checkbox
     checkbox.addEventListener('change', toggleDropzoneVisibility);
