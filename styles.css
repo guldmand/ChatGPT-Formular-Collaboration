@@ -1,0 +1,61 @@
+/* Basal styling for formular */
+.sb-form__input, .sb-form__input:focus {
+    outline: none;
+    border: 1px solid #ccc; /* Standard grå kant */
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: none;
+}
+
+.sb-form__set.error .sb-form__input {
+    border-color: red; /* Rød kant for fejl */
+    box-shadow: 0 0 5px red; /* Tilføj en let skygge for at fremhæve fejlen */
+}
+
+.sb-form__set .sb-form__input.valid-now {
+    border-color: green; /* Grøn kant for nyligt validerede felter */
+    box-shadow: 0 0 5px green; /* Grøn skygge for at fremhæve den korrekte validering */
+}
+
+/* Animation for at fjerne grøn kant og skygge */
+@keyframes fadeOutBorder {
+    to {
+        border-color: #ccc;
+        box-shadow: none;
+    }
+}
+
+.sb-form__set .sb-form__input.valid-now {
+    animation: fadeOutBorder 5s forwards;
+}
+
+/* Yderligere styling */
+.sb-form__error-text {
+    color: red;
+    display: none; /* Skjult som standard */
+}
+
+.sb-form__set.error .sb-form__error-text {
+    display: block; /* Vis */
+}
+
+/* Tilføj yderligere styling efter behov */
+.sb-form__section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.sb-form__heading {
+    margin-bottom: 20px;
+}
+
+
+/* Tilpasning af select elementer for konsistent udseende */
+.sb-form__input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    margin-top: 20px; /* Juster værdien efter behov */
+}

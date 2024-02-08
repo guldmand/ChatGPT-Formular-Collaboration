@@ -3,47 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Formular</title>
-    <link rel="stylesheet" href="style.css"> <!-- Hvis du har en CSS-fil -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <form id="dataForm" action="/submit-form" method="POST" novalidate>
         <section class="sb-form__section">
-            <h2 class="sb-form__heading">Ansøgning</h2>
+            <h2 class="sb-form__heading">Formular</h2>
             <div class="sb-form__column">
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
-                        <input class="sb-form__input" type="text" name="Name" autocomplete="name" required>
                         <span class="sb-form__label-text">Navn</span>
+                        <input class="sb-form__input" type="text" name="Name" autocomplete="name" required>
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste dit navn</span>
                 </fieldset>
 
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
-                        <input class="sb-form__input" type="email" name="Email" autocomplete="email" required>
                         <span class="sb-form__label-text">Email</span>
+                        <input class="sb-form__input" type="email" name="Email" autocomplete="email" required>
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste en gyldig email-adresse</span>
                 </fieldset>
 
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
-                        <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}">
                         <span class="sb-form__label-text">Postnummer</span>
+                        <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}">
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste et gyldigt postnummer</span>
                 </fieldset>
 
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
-                        <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required>
                         <span class="sb-form__label-text">By</span>
+                        <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required>
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste din by</span>
                 </fieldset>
 
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
+                        <span class="sb-form__label-text">Land</span>
                         <select class="sb-form__input" name="Country" required>
                             <option value="">Vælg et land...</option>
                             <option value="Denmark">Danmark</option>
@@ -51,15 +52,14 @@
                             <option value="Norway">Norge</option>
                             <!-- Flere lande efter behov -->
                         </select>
-                        <span class="sb-form__label-text">Land</span>
                     </label>
                     <span class="sb-form__error-text">Du skal vælge et land</span>
                 </fieldset>
 
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
-                        <textarea class="sb-form__input" name="Interests" rows="4" required></textarea>
                         <span class="sb-form__label-text">Interesser</span>
+                        <textarea class="sb-form__input" name="Interests" rows="4" required></textarea>
                     </label>
                     <span class="sb-form__error-text">Beskriv venligst dine interesser</span>
                 </fieldset>
