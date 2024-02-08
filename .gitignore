@@ -1,0 +1,6 @@
+.git
+/MinimalAPI/bin
+/MinimalAPI/obj
+/MinimalAPI/Properties
+appsettings.json
+appsettings.Development.json
