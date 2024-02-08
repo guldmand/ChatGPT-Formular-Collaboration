@@ -29,18 +29,18 @@
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
                         <span class="sb-form__label-text">Postnummer</span>
-                        <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}">
+                        <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}" title="Postnummer skal være 4 cifre.">
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste et gyldigt postnummer</span>
                 </fieldset>
-
+                
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
                         <span class="sb-form__label-text">By</span>
-                        <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required>
+                        <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required pattern="[A-Za-z\s]+" title="By må kun indeholde bogstaver.">
                     </label>
                     <span class="sb-form__error-text">Du skal indtaste din by</span>
-                </fieldset>
+                </fieldset>                
 
                 <fieldset class="sb-form__set">
                     <label class="sb-form__label">
