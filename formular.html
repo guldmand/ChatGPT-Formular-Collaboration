@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formular</title>
-    
-    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.css" rel="stylesheet">-->
+
     <link rel="stylesheet" href="styles/core.css">
     <link rel="stylesheet" href="styles/modules.css">
     <link rel="stylesheet" href="styles/hr.css">
@@ -80,10 +79,14 @@
                     </fieldset>
 
                     <!-- Container for Dropzone, skjult som standard -->
-                    <div id="dropzoneContainer" class="hidden">
-                        <!-- Dropzone setup vil ske her -->
-                        <div class="dropzone" id="my-awesome-dropzone"></div>
-                    </div>
+                    <fieldset class="sb-form__set" style="padding: 0;">
+                        <input type="hidden" id="dropzoneValidationField" name="dropzoneValidation" value="" required>
+                        <div id="dropzoneContainer" class="hidden">
+                            <!-- Dropzone setup vil ske her -->
+                            <div class="dropzone" id="my-awesome-dropzone"></div>
+                        </div>
+                    </fieldset>
+                    <span class="sb-form__error-text dropzoneCustomValidation hidden">Du skal uploade mindst én fil</span>
 
                     <input type="submit" value="Send" aria-label="Submit Form">
                 </div>

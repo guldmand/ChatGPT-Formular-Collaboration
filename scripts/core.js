@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Formular er gyldig og klar til at blive indsendt.');
             // Her kan du indsætte logik for at indsende formen, f.eks. via AJAX.
         }
+        else {
+            console.log('Form invalid');
+        }
     });
 
     // Validering ved input-ændring
@@ -31,6 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
 function validateInput(input) {
     const fieldset = input.closest('.sb-form__set');
     const errorText = fieldset.querySelector('.sb-form__error-text');
+
+        // Special handling for Dropzone validation field
+        if (input.id === 'dropzoneValidationField' && input.value === '') {
+            console.log('Special handling required!');
+            fieldset.classList.add('error');
+            errorText.style.display = 'block';
+            return false;
+        }
 
     if (!input.checkValidity()) {
         fieldset.classList.add('error');

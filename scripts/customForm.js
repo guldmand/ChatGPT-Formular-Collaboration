@@ -3,7 +3,13 @@ Dropzone.autoDiscover = false;
 var boBehandling = {
     checkbox: null,
     dropzoneContainer: null,
+    dropzoneValidation: null,  //.dropzoneCustomValidation
+    dropzoneField: null,       //.dz-default
     myDropzone: null,
+
+    //validation
+    //filesRequired: null,
+    dropzoneValidationFieldValue: null,
 
     init: function() {
         this.checkbox = document.getElementById('uploadCheckbox');
@@ -17,9 +23,15 @@ var boBehandling = {
     toggleDropzoneVisibility: function() {
         if (this.checkbox.checked) {
             this.dropzoneContainer.classList.remove('hidden');
+            //this.filesRequired = true;
+            //console.log( 'files required value: '+  this.filesRequired);
             this.initializeDropzone();
         } else {
             this.dropzoneContainer.classList.add('hidden');
+            //this.filesRequired = false;
+            //console.log( 'files required value: '+  this.filesRequired);
+            //console.log(this.dropzoneValidation);
+
             if (this.myDropzone) {
                 this.myDropzone.removeAllFiles(true);
             }
@@ -27,6 +39,7 @@ var boBehandling = {
     },
 
     initializeDropzone: function() {
+        var self = this; // Reference to the boBehandling object
         if (!this.myDropzone) {
             this.myDropzone = new Dropzone("#my-awesome-dropzone", {
                 url: "/file/post",
@@ -39,15 +52,60 @@ var boBehandling = {
                                     '</div>' +                     
                                  '</div>',
             });
+    
+            // Add event listener for "addedfile" event
+            this.myDropzone.on("addedfile", function(file) {
+
+                document.getElementById('dropzoneValidationField').value = '1'; // Indicate that a file has been added
+
+                // Hide dropzone validation error as soon as a file is added
+                self.hideDropzoneValidation();
+            });
+
+            this.myDropzone.on("removedfile", function(file) {
+                if (self.myDropzone.files.length === 0) {
+                    document.getElementById('dropzoneValidationField').value = ''; // Reset if no files are present
+                }
+            });
         }
     },
+    
+    
+
 
     handleSubmit: function(e) {
         if (this.checkbox.checked && this.myDropzone.getAcceptedFiles().length === 0) {
             e.preventDefault();
-            alert('Du skal uploade mindst én fil, når checkboxen er markeret.');
+            console.log('zero files was added to the dropzone');
+            this.showDropzoneValidation();
         }
-    }
+    },
+
+    showDropzoneValidation: function() {
+        console.log( 'time to show custom dropzone validation error');
+        // Vis dropzone invalid ValideringsFelt
+        this.dropzoneValidation = document.querySelector('.dropzoneCustomValidation');
+        this.dropzoneValidation.classList.remove('hidden');
+        //console.log(this.dropzoneValidation);
+
+        // Vis Dropzone felt error
+        this.dropzoneField = document.querySelector('.dz-default');
+        this.dropzoneField.classList.add('error');
+        //console.log(this.dropzoneField);
+    },
+
+    hideDropzoneValidation: function() {
+        console.log( 'time to hide custom dropzone validation error');
+        // skjul dropzone invalid ValideringsFelt
+        this.dropzoneValidation = document.querySelector('.dropzoneCustomValidation');
+        this.dropzoneValidation.classList.add('hidden');
+        //console.log(this.dropzoneValidation);
+
+        // Skjul Dropzone felt error
+        this.dropzoneField = document.querySelector('.dz-default');
+        this.dropzoneField.classList.remove('error');
+    },
+
 };
 
 document.addEventListener('DOMContentLoaded', function() {

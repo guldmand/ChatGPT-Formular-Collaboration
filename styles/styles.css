@@ -30,7 +30,7 @@
 
 /* Yderligere styling */
 .sb-form__error-text {
-    color: red;
+    color: white;
     display: none; /* Skjult som standard */
 }
 
@@ -63,7 +63,7 @@ form input[type="submit"] {
 
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 
@@ -92,4 +92,16 @@ form input[type="submit"] {
 
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+}
+
+#dropzoneContainer .dropzone .dz-default .error {
+    border: 1px solid red;
+    margin-bottom: 0;
+}
+
+
+.dropzoneCustomValidation {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    color: white;
 }
