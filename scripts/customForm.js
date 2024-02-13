@@ -1,60 +1,55 @@
-// Disable Dropzone's auto-discovery feature.
 Dropzone.autoDiscover = false;
 
-document.addEventListener('DOMContentLoaded', function() {
-    var checkbox = document.getElementById('uploadCheckbox');
-    var dropzoneContainer = document.getElementById('dropzoneContainer');
-    var myDropzone = null; // Initialize the variable but don't create the Dropzone yet
+var boBehandling = {
+    checkbox: null,
+    dropzoneContainer: null,
+    myDropzone: null,
 
-    // Function to initialize Dropzone
-    function initializeDropzone() {
-        if (!myDropzone) { // Only initialize if myDropzone hasn't been created yet
-            myDropzone = new Dropzone("#my-awesome-dropzone", {
+    init: function() {
+        this.checkbox = document.getElementById('uploadCheckbox');
+        this.dropzoneContainer = document.getElementById('dropzoneContainer');
+
+        this.checkbox.addEventListener('change', this.toggleDropzoneVisibility.bind(this));
+        this.toggleDropzoneVisibility();
+        document.getElementById('dataForm').addEventListener('submit', this.handleSubmit.bind(this));
+    },
+
+    toggleDropzoneVisibility: function() {
+        if (this.checkbox.checked) {
+            this.dropzoneContainer.classList.remove('hidden');
+            this.initializeDropzone();
+        } else {
+            this.dropzoneContainer.classList.add('hidden');
+            if (this.myDropzone) {
+                this.myDropzone.removeAllFiles(true);
+            }
+        }
+    },
+
+    initializeDropzone: function() {
+        if (!this.myDropzone) {
+            this.myDropzone = new Dropzone("#my-awesome-dropzone", {
                 url: "/file/post",
-                autoProcessQueue: false
+                autoProcessQueue: false,
+                previewTemplate: '<div class="dz-preview dz-file-preview">' +
+                                    '<div class="dz-details">' +
+                                    '<div class="dz-filename icon icon--document"><span data-dz-name></span></div>' +
+                                    '<div class="dz-size" data-dz-size></div>' +                          
+                                    '<a class="dz-remove" data-dz-remove><span>Fjern</span></a>' +
+                                    '</div>' +                     
+                                 '</div>',
             });
         }
-    }
+    },
 
-    // Function to toggle Dropzone visibility
-    function toggleDropzoneVisibility() {
-        var checkbox = document.getElementById('uploadCheckbox');
-        var dropzoneContainer = document.getElementById('dropzoneContainer');
-    
-        if (checkbox.checked) {
-            dropzoneContainer.classList.remove('hidden');
-            // Sikrer, at Dropzone er initialiseret
-            if (!myDropzone) {
-                initializeDropzone();
-            }
-            // Aktiver validering for Dropzone (kræver mindst én fil)
-            myDropzone.options.dictDefaultMessage = "Træk filer herhen for at uploade (påkrævet)";
-            myDropzone.required = true; // Dette er mere symbolsk, da Dropzone ikke bruger en 'required' egenskab på samme måde som native input felter.
-        } else {
-            dropzoneContainer.classList.add('hidden');
-            // Deaktiver validering for Dropzone
-            if (myDropzone) {
-                myDropzone.removeAllFiles(true); // Fjerner alle filer og resetter Dropzone, hvis det er nødvendigt
-            }
-            myDropzone.options.dictDefaultMessage = "Træk filer herhen for at uploade";
-            myDropzone.required = false; // Igen, mere symbolsk
-        }
-    }
-
-    document.getElementById('dataForm').addEventListener('submit', function(e) {
-        var checkbox = document.getElementById('uploadCheckbox');
-        // Tjek om checkboxen er markeret, og om der er filer i Dropzone
-        if (checkbox.checked && myDropzone.getAcceptedFiles().length === 0) {
-            e.preventDefault(); // Forhindrer formen i at blive indsendt
+    handleSubmit: function(e) {
+        if (this.checkbox.checked && this.myDropzone.getAcceptedFiles().length === 0) {
+            e.preventDefault();
             alert('Du skal uploade mindst én fil, når checkboxen er markeret.');
-            // Tilføj yderligere brugerfeedback her, f.eks. visning af en fejlmeddelelse
         }
-    });   
-    
+    }
+};
 
-    // Event listener for the checkbox
-    checkbox.addEventListener('change', toggleDropzoneVisibility);
-
-    // Call the function initially in case the checkbox is already checked when the page loads
-    toggleDropzoneVisibility();
+document.addEventListener('DOMContentLoaded', function() {
+    boBehandling.init();
 });

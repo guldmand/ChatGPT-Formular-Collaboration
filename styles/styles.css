@@ -58,9 +58,38 @@
 
 form input[type="submit"] {
     margin-top: 20px; /* Juster værdien efter behov */
+    margin-left: 1.4285714286rem;
 }
 
 
 .hidden {
     display: none;
+}
+
+
+/* custom  dropzone styles */
+
+/*#dropzoneContainer .dropzone :not(.dz-started) {
+
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}*/
+
+
+#dropzoneContainer .dropzone .dz-preview {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+
+#dropzoneContainer .dropzone .dz-default {
+    margin-bottom: 1rem;
+    padding: 6rem 2rem;
+    border: 1px dashed #c5c7c7;
+    border-radius: 2px;
+    background-color: #f8fafc;
+    cursor: pointer;
+
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }

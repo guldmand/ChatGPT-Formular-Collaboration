@@ -3,87 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Formular</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.css" rel="stylesheet">
+    
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="styles/core.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/hr.css">
+
+
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <form id="dataForm" action="/submit-form" method="POST" novalidate>
-        <section class="sb-form__section">
-            <h2 class="sb-form__heading">Formular</h2>
-            <div class="sb-form__column">
-                <fieldset class="sb-form__set">
-                    <label class="sb-form__label">
-                        <span class="sb-form__label-text">Navn</span>
-                        <input class="sb-form__input" type="text" name="Name" autocomplete="name" required aria-label="Full Name">
-                    </label>
-                    <span class="sb-form__error-text">Du skal indtaste dit navn</span>
-                </fieldset>
+    <div class="container" style="width: 960px; margin-left: auto; margin-right: auto; margin-top: 200px; border: 1px solid black; padding: 2rem;">
+        <form id="dataForm" action="/submit-form" method="POST" novalidate>
+            <section>
+                <h2 class="sb-form__heading">Formular</h2>
+                <div class="sb-form__column">
+                    <fieldset class="sb-form__set">
+                        <label class="sb-form__label">
+                            <span class="sb-form__label-text">Navn</span>
+                            <input class="sb-form__input" type="text" name="Name" autocomplete="name" required aria-label="Full Name">
+                        </label>
+                        <span class="sb-form__error-text">Du skal indtaste dit navn</span>
+                    </fieldset>
 
-                <fieldset class="sb-form__set">
-                    <label class="sb-form__label">
-                        <span class="sb-form__label-text">Email</span>
-                        <input class="sb-form__input" type="email" name="Email" autocomplete="email" required aria-label="Email Address">
-                    </label>
-                    <span class="sb-form__error-text">Du skal indtaste en gyldig email-adresse</span>
-                </fieldset>
+                    <fieldset class="sb-form__set">
+                        <label class="sb-form__label">
+                            <span class="sb-form__label-text">Email</span>
+                            <input class="sb-form__input" type="email" name="Email" autocomplete="email" required aria-label="Email Address">
+                        </label>
+                        <span class="sb-form__error-text">Du skal indtaste en gyldig email-adresse</span>
+                    </fieldset>
 
-                <fieldset class="sb-form__set">
-                    <label class="sb-form__label">
-                        <span class="sb-form__label-text">Postnummer</span>
-                        <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}" title="Postnummer skal være 4 cifre." aria-label="Postnummer">
-                    </label>
-                    <span class="sb-form__error-text">Du skal indtaste et gyldigt postnummer</span>
-                </fieldset>
-                
-                <fieldset class="sb-form__set">
-                    <label class="sb-form__label">
-                        <span class="sb-form__label-text">By</span>
-                        <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required pattern="[A-Za-z\s]+" title="By må kun indeholde bogstaver." aria-label="By">
-                    </label>
-                    <span class="sb-form__error-text">Du skal indtaste din by</span>
-                </fieldset>                
+                    <fieldset class="sb-form__set">
+                        <label class="sb-form__label">
+                            <span class="sb-form__label-text">Postnummer</span>
+                            <input class="sb-form__input" type="text" name="Postcode" autocomplete="postal-code" required pattern="\d{4}" title="Postnummer skal være 4 cifre." aria-label="Postnummer">
+                        </label>
+                        <span class="sb-form__error-text">Du skal indtaste et gyldigt postnummer</span>
+                    </fieldset>
+                    
+                    <fieldset class="sb-form__set">
+                        <label class="sb-form__label">
+                            <span class="sb-form__label-text">By</span>
+                            <input class="sb-form__input" type="text" name="City" autocomplete="address-level2" required pattern="[A-Za-z\s]+" title="By må kun indeholde bogstaver." aria-label="By">
+                        </label>
+                        <span class="sb-form__error-text">Du skal indtaste din by</span>
+                    </fieldset>                
 
-                <fieldset class="sb-form__set">
-                    <label class="sb-form__label">
-                        <span class="sb-form__label-text">Land</span>
-                        <select class="sb-form__input" name="Country" required aria-label="Country">
-                            <option value="">Vælg et land...</option>
-                            <option value="Denmark">Danmark</option>
-                            <option value="Sweden">Sverige</option>
-                            <option value="Norway">Norge</option>
-                            <!-- Flere lande efter behov -->
-                        </select>
-                    </label>
-                    <span class="sb-form__error-text">Du skal vælge et land</span>
-                </fieldset>
+                    <fieldset class="sb-form__set">
+                        <label class="sb-form__label">
+                            <span class="sb-form__label-text">Land</span>
+                            <select class="sb-form__input" name="Country" required aria-label="Country">
+                                <option value="">Vælg et land...</option>
+                                <option value="Denmark">Danmark</option>
+                                <option value="Sweden">Sverige</option>
+                                <option value="Norway">Norge</option>
+                                <!-- Flere lande efter behov -->
+                            </select>
+                        </label>
+                        <span class="sb-form__error-text">Du skal vælge et land</span>
+                    </fieldset>
 
-                <fieldset class="sb-form__set">
-                    <label class="sb-form__label">
-                        <span class="sb-form__label-text">Interesser</span>
-                        <textarea class="sb-form__input" name="Interests" rows="4" required></textarea>
-                    </label>
-                    <span class="sb-form__error-text">Beskriv venligst dine interesser</span>
-                </fieldset>
+                    <fieldset class="sb-form__set">
+                        <label class="sb-form__label">
+                            <span class="sb-form__label-text">Interesser</span>
+                            <textarea class="sb-form__input" name="Interests" rows="4" required></textarea>
+                        </label>
+                        <span class="sb-form__error-text">Beskriv venligst dine interesser</span>
+                    </fieldset>
 
-                <fieldset class="sb-form__set">
-                    <label class="sb-form__label">
-                        <input type="checkbox" id="uploadCheckbox" aria-label="Upload filer?">
-                        Skal der uploades filer?
-                    </label>
-                </fieldset>
+                    <fieldset class="sb-form__set">
+                        <label class="sb-form__label">
+                            <input type="checkbox" id="uploadCheckbox" aria-label="Upload filer?">
+                            Skal der uploades filer?
+                        </label>
+                    </fieldset>
 
-                <!-- Container for Dropzone, skjult som standard -->
-                <div id="dropzoneContainer" class="hidden">
-                    <!-- Dropzone setup vil ske her -->
-                    <div class="dropzone" id="my-awesome-dropzone"></div>
+                    <!-- Container for Dropzone, skjult som standard -->
+                    <div id="dropzoneContainer" class="hidden">
+                        <!-- Dropzone setup vil ske her -->
+                        <div class="dropzone" id="my-awesome-dropzone"></div>
+                    </div>
+
+                    <input type="submit" value="Send" aria-label="Submit Form">
                 </div>
+            </section>
+        </form>
+    </div>
 
-                <input type="submit" value="Send" aria-label="Submit Form">
-            </div>
-        </section>
-    </form>
     <script src="scripts/Core.js"></script>
-    <script src="scripts/dropzone.js"></script>
+    <script src="scripts/dropzone-original.js"></script>
     <script src="scripts/customForm.js"></script>
 </body>
 </html>
