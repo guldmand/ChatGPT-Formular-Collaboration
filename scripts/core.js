@@ -14,12 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        if ((isValid) && (document.getElementById('dropzoneValidationField').value === "")) {
-            //console.log('File misssing.');
-            document.querySelector('.dropzoneCustomValidation').classList.remove('hidden');
-            document.querySelector('.dropzoneCustomValidation').style.display = "block";
 
-            document.querySelector('.dz-default').classList.add('error');
+        // is checkbox checked?
+        console.log('we are here now !');
+        console.log( document.getElementById('uploadCheckbox') );
+
+        if ((isValid) && (document.getElementById('dropzoneValidationField').value === "") && (document.getElementById('uploadCheckbox').checked)) {
+            console.log('File misssing, showing dropbox validation error!');
+            document.querySelector('.dropzoneCustomValidation').classList.remove('hidden');
+            //document.querySelector('.dropzoneCustomValidation').style.display = "block";
+
+            /*var dropzonefield = document.querySelector('.dz-default')
+            if( dropzonefield) {
+                dropzonefield.classList.add('error');
+            }*/
             isValid = false;
         }
         else if (isValid) {

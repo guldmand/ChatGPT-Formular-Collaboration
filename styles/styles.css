@@ -66,21 +66,10 @@ form input[type="submit"] {
     display: none !important;
 }
 
-
-/* custom  dropzone styles */
-
-/*#dropzoneContainer .dropzone :not(.dz-started) {
-
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-}*/
-
-
 #dropzoneContainer .dropzone .dz-preview {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
 }
-
 
 #dropzoneContainer .dropzone .dz-default {
     margin-bottom: 1rem;
@@ -89,7 +78,6 @@ form input[type="submit"] {
     border-radius: 2px;
     background-color: #f8fafc;
     cursor: pointer;
-
     margin-left: 1.5rem;
     margin-right: 1.5rem;
 }
@@ -99,8 +87,8 @@ form input[type="submit"] {
     margin-bottom: 0 !important;
 }
 
-
 .dropzoneCustomValidation {
+    display: block;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
     color: white;

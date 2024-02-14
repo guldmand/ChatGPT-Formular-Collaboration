@@ -27,6 +27,7 @@ var boBehandling = {
             this.dropzoneContainer.classList.add('hidden');
             if (this.myDropzone) {
                 this.myDropzone.removeAllFiles(true);
+                this.hideDropzoneValidation();
             }
         }
     },
@@ -87,6 +88,7 @@ var boBehandling = {
         // Vis dropzone invalid ValideringsFelt
         this.dropzoneValidation = document.querySelector('.dropzoneCustomValidation');
         this.dropzoneValidation.classList.remove('hidden');
+        //this.dropzoneValidation.style.display = "block";
 
         // Vis Dropzone felt error
         this.dropzoneField = document.querySelector('.dz-default');
@@ -98,6 +100,7 @@ var boBehandling = {
         // skjul dropzone invalid ValideringsFelt
         this.dropzoneValidation = document.querySelector('.dropzoneCustomValidation');
         this.dropzoneValidation.classList.add('hidden');
+        //this.dropzoneValidation.style.display = "none";
 
         // Skjul Dropzone felt error
         this.dropzoneField = document.querySelector('.dz-default');
