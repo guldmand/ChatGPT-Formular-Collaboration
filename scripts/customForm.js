@@ -68,9 +68,32 @@ var boBehandling = {
             //console.log('zero files was added to the dropzone');
             this.showDropzoneValidation();
         }
+
         if (this.checkbox.checked && this.myDropzone.getAcceptedFiles().length > 0) {
             //console.log('Files was added to the dropzone');
             this.hideDropzoneValidation();
+    
+            // Prepare form data
+            var formData = new FormData();
+            this.myDropzone.getAcceptedFiles().forEach(function(file) {
+                formData.append('files', file);
+            });
+    
+            // Send the AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:5000/submit-form', true);
+            //xhr.setRequestHeader('Content-Type', 'application/json'); // Set Content-Type header
+            xhr.setRequestHeader('x-api-key', 'ThisIsJustATest'); // Set x-api-key header
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Redirect to kvittering.html if the upload was successful
+                    window.location.href = 'kvittering.html';
+                } else {
+                    // Handle error
+                    console.error('An error occurred during the upload');
+                }
+            };
+            xhr.send(formData);
         }
     },
 
