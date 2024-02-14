@@ -94,9 +94,9 @@ form input[type="submit"] {
     margin-right: 1.5rem;
 }
 
-#dropzoneContainer .dropzone .dz-default .error {
-    border: 1px solid red;
-    margin-bottom: 0;
+#dropzoneContainer .dropzone .dz-default.error {
+    border: 1px solid red !important;
+    margin-bottom: 0 !important;
 }
 
 
