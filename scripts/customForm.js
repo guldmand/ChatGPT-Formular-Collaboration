@@ -13,7 +13,24 @@ var boBehandling = {
         this.dropzoneContainer = document.getElementById('dropzoneContainer');
         this.checkbox.addEventListener('change', this.toggleDropzoneVisibility.bind(this));
         this.toggleDropzoneVisibility();
+
+        // Custom temporary AlertSubmit handling
+        this.form = document.getElementById('dataForm');
+        
+        // if submit is clicked
         document.getElementById('dataForm').addEventListener('submit', this.handleSubmit.bind(this));
+    },
+
+    showSubmitAlert: function(e) {
+        console.log('showSubmitAlert');
+        e.preventDefault(); // Prevent form submission
+        var formData = new FormData(this.form);
+        var object = {};
+        formData.forEach(function(value, key){
+            object[key] = value;
+        });
+        var json = JSON.stringify(object, null, 2);
+        alert(json); // Show form data
     },
 
     toggleDropzoneVisibility: function() {
@@ -78,7 +95,11 @@ var boBehandling = {
             this.myDropzone.getAcceptedFiles().forEach(function(file) {
                 formData.append('files', file);
             });
+
+            e.preventDefault();
+            this.showSubmitAlert(e);
     
+            /* temporarily disabled because of customALert
             // Send the AJAX request
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://localhost:5000/submit-form', true);
@@ -94,6 +115,7 @@ var boBehandling = {
                 }
             };
             xhr.send(formData);
+            */
         }
     },
 
