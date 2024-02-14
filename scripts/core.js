@@ -14,20 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-
-        // is checkbox checked?
-        console.log('we are here now !');
-        console.log( document.getElementById('uploadCheckbox') );
-
         if ((isValid) && (document.getElementById('dropzoneValidationField').value === "") && (document.getElementById('uploadCheckbox').checked)) {
             console.log('File misssing, showing dropbox validation error!');
             document.querySelector('.dropzoneCustomValidation').classList.remove('hidden');
-            //document.querySelector('.dropzoneCustomValidation').style.display = "block";
-
-            /*var dropzonefield = document.querySelector('.dz-default')
-            if( dropzonefield) {
-                dropzonefield.classList.add('error');
-            }*/
             isValid = false;
         }
         else if (isValid) {
@@ -46,24 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function validateInput(input) {
     const fieldset = input.closest('.sb-form__set');
     const errorText = fieldset.querySelector('.sb-form__error-text');
-
-        /*
-        // Special handling for Dropzone validation field
-        if (input.id === 'dropzoneValidationField' && input.value === '') {
-            console.log('Special handling required!');
-            fieldset.classList.add('error');
-            errorText.style.display = 'block';
-            return false;
-        }*/
-
-        /*
-        // Special handling for Dropzone validation field
-        var dropzoneValidationField = document.getElementById('dropzoneValidationField');
-        if (dropzoneValidationField.value === '') {
-            console.log('Special handling required!');
-            //fieldset.classList.add('error');
-            //errorText.style.display = 'block';
-        }*/
 
     if (!input.checkValidity()) {
         fieldset.classList.add('error');

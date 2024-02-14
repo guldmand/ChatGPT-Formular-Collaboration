@@ -3,17 +3,14 @@ Dropzone.autoDiscover = false;
 var boBehandling = {
     checkbox: null,
     dropzoneContainer: null,
-    dropzoneValidation: null,  //.dropzoneCustomValidation
-    dropzoneField: null,       //.dz-default
+    dropzoneValidation: null,
+    dropzoneField: null,
     myDropzone: null,
-
-    //validation
     dropzoneValidationFieldValue: null,
 
     init: function() {
         this.checkbox = document.getElementById('uploadCheckbox');
         this.dropzoneContainer = document.getElementById('dropzoneContainer');
-
         this.checkbox.addEventListener('change', this.toggleDropzoneVisibility.bind(this));
         this.toggleDropzoneVisibility();
         document.getElementById('dataForm').addEventListener('submit', this.handleSubmit.bind(this));
@@ -52,31 +49,25 @@ var boBehandling = {
                 console.log(' + file was added to dropzone')
                 document.getElementById('dropzoneValidationField').value = '1'; // Indicate that a file has been added
                 // Hide dropzone validation error as soon as a file is added
-                //console.log( document.getElementById('dropzoneValidationField').value );
                 self.hideDropzoneValidation();
             });
 
+            // Add event listener for "removedfile" event
             this.myDropzone.on("removedfile", function(file) {
                 console.log(' - file was removed from dropzone')
                 if (self.myDropzone.files.length === 0) {
                     document.getElementById('dropzoneValidationField').value = ''; // Reset if no files are present
                 }
-                //console.log( document.getElementById('dropzoneValidationField').value );
             });
         }
     },
     
-    
-
-
     handleSubmit: function(e) {
-        //console.log( this.myDropzone.getAcceptedFiles().length);
         if (this.checkbox.checked && this.myDropzone.getAcceptedFiles().length === 0) {
             e.preventDefault();
             //console.log('zero files was added to the dropzone');
             this.showDropzoneValidation();
         }
-
         if (this.checkbox.checked && this.myDropzone.getAcceptedFiles().length > 0) {
             //console.log('Files was added to the dropzone');
             this.hideDropzoneValidation();
@@ -88,8 +79,6 @@ var boBehandling = {
         // Vis dropzone invalid ValideringsFelt
         this.dropzoneValidation = document.querySelector('.dropzoneCustomValidation');
         this.dropzoneValidation.classList.remove('hidden');
-        //this.dropzoneValidation.style.display = "block";
-
         // Vis Dropzone felt error
         this.dropzoneField = document.querySelector('.dz-default');
         this.dropzoneField.classList.add('error');
@@ -100,8 +89,6 @@ var boBehandling = {
         // skjul dropzone invalid ValideringsFelt
         this.dropzoneValidation = document.querySelector('.dropzoneCustomValidation');
         this.dropzoneValidation.classList.add('hidden');
-        //this.dropzoneValidation.style.display = "none";
-
         // Skjul Dropzone felt error
         this.dropzoneField = document.querySelector('.dz-default');
         this.dropzoneField.classList.remove('error');
